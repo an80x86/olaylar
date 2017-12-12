@@ -9,9 +9,11 @@
     "logs": "firebase functions:log"
   },
   "dependencies": {
+    "consolidate": "^0.15.0",
     "express": "^4.16.2",
     "firebase-admin": "~5.4.2",
-    "firebase-functions": "^0.7.1"
+    "firebase-functions": "^0.7.1",
+    "handlebars": "^4.0.11"
   },
   "private": true
 }
