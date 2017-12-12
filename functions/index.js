@@ -1,3 +1,4 @@
+const bodyParser = require('body-parser');
 const uuid = require('uuid');
 const functions = require('firebase-functions');
 const firebase = require('firebase-admin');
@@ -83,12 +84,21 @@ function getLogin() {
 }
 
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.engine('hbs', engines.handlebars);
 app.set('views','./views');
 app.set('view engine','hbs');
 
 app.get('/', (request, response) => {
+  var token = request.param('token');
+  if (!token) {
+    response.redirect('/login')
+    return;
+  }
+
   console.log("üretilen-no--->" + uuid.v1());
+  console.log("token--->" + token);
   //getLogin();
   //listAllUsers();
   response.set('Cache-Control', 'public, max-age=300, s-maxage=600');
@@ -99,6 +109,14 @@ app.get('/', (request, response) => {
 
 app.get('/login', (request, response) => {
   response.render('login');
+});
+
+app.post('/login', function(req, res) {
+  var name = req.body.name;
+  var password = req.body.password;
+
+  console.log(name + ' ' + password);
+  res.send(name + ' ' + password);
 });
 
 app.get('/firma', (request, response) => {
