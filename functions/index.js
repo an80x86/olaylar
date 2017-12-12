@@ -95,6 +95,10 @@ app.get('/', (request, response) => {
   });
 });
 
+app.get('/login', (request, response) => {
+  response.render('login');
+});
+
 app.get('/firma', (request, response) => {
   response.set('Cache-Control', 'public, max-age=300, s-maxage=600');
   getFirmas().then(facts => {
