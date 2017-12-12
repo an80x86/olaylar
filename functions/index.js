@@ -112,11 +112,12 @@ app.get('/login', (request, response) => {
 });
 
 app.post('/login', function(req, res) {
+  var firma = req.body.firma;
   var name = req.body.name;
   var password = req.body.password;
 
-  console.log(name + ' ' + password);
-  res.send(name + ' ' + password);
+  console.log(firma + ' ' + name + ' ' + password);
+  res.send(firma + ' ' + name + ' ' + password);
 });
 
 app.get('/firma', (request, response) => {
