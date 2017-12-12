@@ -24,18 +24,61 @@ function getFacts() {
   return ref.once('value').then(snap => snap.val());
 }
 
+function getFirmas() {
+  const ref = firebaseApp.database().ref('firma');
+  return ref.once('value').then(snap => snap.val());
+}
+
+function getKullanicis() {
+  const ref = firebaseApp.database().ref('kullanici');
+  return ref.once('value').then(snap => snap.val());
+}
+
+function listAllUsers(nextPageToken) {
+  /*
+  firebaseApp.auth().createUser({
+    uid: "some-uid",
+    email: "user@example.com",
+    phoneNumber: "+11234567890"
+  })
+    .then(function(userRecord) {
+      // See the UserRecord reference doc for the contents of userRecord.
+      console.log("Successfully created new user:", userRecord.uid);
+    })
+    .catch(function(error) {
+      console.log("Error creating new user:", error);
+    });
+  */
+  /*
+  // List batch of users, 1000 at a time.
+  firebaseApp.auth().listUsers(1000, nextPageToken)
+    .then(function(listUsersResult) {
+      listUsersResult.users.forEach(function(userRecord) {
+        console.log("user", userRecord.toJSON());
+      });
+      if (listUsersResult.pageToken) {
+        // List next batch of users.
+        listAllUsers(listUsersResult.pageToken)
+      }
+    })
+    .catch(function(error) {
+      console.log("Error listing users:", error);
+    });
+  */
+}
+
 function getLogin() {
   var defaultAuth = firebaseApp.auth();
+  var defaultDatabase = firebaseApp.database();
+  console.log("--------------> "+firebase.app().name);// "default"
+  
   defaultAuth.getUserByEmail("an80x86@gmail.com")
     .then(function(userRecord) {
-      console.log("Successfully fetched user data:", userRecord.toJSON());
+      console.log("Successfully fetched user data:", userRecord. uid);// .toJSON());
     })
     .catch(function(error) {
       console.log("Error fetching user data:", error);
     });
-
-  // ... or use the equivalent shorthand notation
-  console.log("->>" + defaultAuth);
 }
 
 const app = express();
@@ -44,10 +87,25 @@ app.set('views','./views');
 app.set('view engine','hbs');
 
 app.get('/', (request, response) => {
-  getLogin();
+  //getLogin();
+  //listAllUsers();
   response.set('Cache-Control', 'public, max-age=300, s-maxage=600');
   getFacts().then(facts => {
     response.render('index', { facts });
+  });
+});
+
+app.get('/firma', (request, response) => {
+  response.set('Cache-Control', 'public, max-age=300, s-maxage=600');
+  getFirmas().then(facts => {
+    response.render('firma', { facts });
+  });
+});
+
+app.get('/kullanici', (request, response) => {
+  response.set('Cache-Control', 'public, max-age=300, s-maxage=600');
+  getKullanicis().then(facts => {
+    response.render('kullanici', { facts });
   });
 });
 
