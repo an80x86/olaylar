@@ -4,6 +4,8 @@ const functions = require('firebase-functions');
 const firebase = require('firebase-admin');
 const express = require('express');
 const engines = require('consolidate');
+//
+const dt = require('./systems/check-firma');
 
 const firebaseConfig = {
   apiKey: "AIzaSyCMIMeI5KzNVLr7zQYlaIZYudhChiW4uU0",
@@ -73,7 +75,7 @@ function getLogin() {
   var defaultAuth = firebaseApp.auth();
   var defaultDatabase = firebaseApp.database();
   console.log("--------------> "+firebase.app().name);// "default"
-  
+
   defaultAuth.getUserByEmail("an80x86@gmail.com")
     .then(function(userRecord) {
       console.log("Successfully fetched user data:", userRecord. uid);// .toJSON());
@@ -118,6 +120,33 @@ app.post('/login', function(req, res) {
 
   console.log(firma + ' ' + name + ' ' + password);
   res.send(firma + ' ' + name + ' ' + password);
+});
+
+app.get('/test', (request, response) => {
+  /*
+  const ref = firebaseApp.database().ref('firma');
+  var obj = ref.once('value').then(snap => snap.val());
+
+  obj.then(facts => {
+    return response.json(facts);
+  });
+  */
+  const ref = firebaseApp.database().ref('firma');
+  console.log("Gelen deger -> " + dt.myDateTime());
+  return response.send(dt.getFirmaKontrol(ref,"test"));
+  /*
+  const ref = firebaseApp.database().ref('firma');
+  var obj = ref.once('value').then(snap => snap.val());
+  obj.then(facts => {
+    //return response.json(facts);
+    var myArray = new Array();
+    facts.forEach(function (fact) {
+      console.log(fact);
+      myArray.push(fact);
+    });
+    return response.send(JSON.stringify(myArray));
+  });
+  */
 });
 
 app.get('/firma', (request, response) => {
