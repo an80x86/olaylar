@@ -60,19 +60,21 @@ app.set('views','./views');
 app.set('view engine','hbs');
 
 app.get('/', (request, response) => {
+  const db = firebaseApp.database();
   var token = request.param('token');
   if (!token) {
     response.redirect('/login')
     return;
   }
-
-  console.log("üretilen-no--->" + uuid.v1());
-  console.log("token--->" + token);
-  //getLogin();
-  //listAllUsers();
-  response.set('Cache-Control', 'public, max-age=300, s-maxage=600');
-  getFacts().then(facts => {
-    response.render('index', { facts });
+  const sonuc = dt.checkToken(db,token).then(gelen=> {
+    if (!gelen) {
+      response.redirect('/login');
+    }
+    else {
+      getFacts().then(facts => {
+        response.render('index', { facts });
+      });
+    }
   });
 });
 
@@ -81,12 +83,11 @@ app.get('/login', (request, response) => {
 });
 
 app.post('/login', function(req, res) {
+  const db = firebaseApp.database();
   var firma = req.body.firma;
   var name = req.body.name;
   var password = req.body.password;
-
-  console.log(firma + ' ' + name + ' ' + password);
-  res.send(firma + ' ' + name + ' ' + password);
+  dt.getFirmaKontrol(res, db, firma,name,password);
 });
 
 app.get('/test', (request, response) => {

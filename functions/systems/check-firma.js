@@ -1,4 +1,15 @@
-const uuid = require('uuid');
+function checkToken(db, token) {
+  const kullanici = db.ref('kullanici').child(token).once('value');
+  var yaz = "?";
+
+  return Promise.all([kullanici]).then(res => {
+    if (res[0].val()) { // null degil ise oku!.
+      yaz = res[0].val().token;
+    }
+  }).then(x => {
+    return yaz === token && yaz !== "?";
+  });
+}
 
 function ilkKayitOlustur(db) {
   //firma kayıt oluştur
@@ -35,12 +46,10 @@ function getFirmaKontrol(response, db, fname, uname, upass) {
   return Promise.all([firma, kullanici]).then(res => {
     var e1 = "?"
     var e2 = "?"
-    var e3 = "?";
 
     res[0].forEach(function(data) {
       if (data.val().ad === fname) {
         e1 = data.key;
-        console.log("buldu(1)!.. " + e1);
       }
     });
 
@@ -50,24 +59,22 @@ function getFirmaKontrol(response, db, fname, uname, upass) {
         data.val().kullanici === uname &&
         data.val().sifre.toString() === upass) {
         e2 = data.key;
-        console.log("buldu(2)!.. " + e2);
       }
     });
 
     if (e1 !== '?' && e2 !== '?') {
-      e3 = uuid.v1();
       var hopperRef = db.ref('kullanici/'+e2);
       hopperRef.update({
-        "token": e3
+        "token": e2
       });
     }
 
-    yaz = e3;//e1 + " -- " + e2 + " -- " + e3;
+    yaz = e2;
   }).then(x => {
     response.redirect('/?token=' + yaz);
-    //response.send(yaz);
   });
 }
 
 exports.getFirmaKontrol = getFirmaKontrol;
 exports.ilkKayitOlustur = ilkKayitOlustur;
+exports.checkToken = checkToken;
