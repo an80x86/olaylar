@@ -38,39 +38,6 @@ function getKullanicis() {
   return ref.once('value').then(snap => snap.val());
 }
 
-function listAllUsers(nextPageToken) {
-  /*
-  firebaseApp.auth().createUser({
-    uid: "some-uid",
-    email: "user@example.com",
-    phoneNumber: "+11234567890"
-  })
-    .then(function(userRecord) {
-      // See the UserRecord reference doc for the contents of userRecord.
-      console.log("Successfully created new user:", userRecord.uid);
-    })
-    .catch(function(error) {
-      console.log("Error creating new user:", error);
-    });
-  */
-  /*
-  // List batch of users, 1000 at a time.
-  firebaseApp.auth().listUsers(1000, nextPageToken)
-    .then(function(listUsersResult) {
-      listUsersResult.users.forEach(function(userRecord) {
-        console.log("user", userRecord.toJSON());
-      });
-      if (listUsersResult.pageToken) {
-        // List next batch of users.
-        listAllUsers(listUsersResult.pageToken)
-      }
-    })
-    .catch(function(error) {
-      console.log("Error listing users:", error);
-    });
-  */
-}
-
 function getLogin() {
   var defaultAuth = firebaseApp.auth();
   var defaultDatabase = firebaseApp.database();
@@ -78,7 +45,7 @@ function getLogin() {
 
   defaultAuth.getUserByEmail("an80x86@gmail.com")
     .then(function(userRecord) {
-      console.log("Successfully fetched user data:", userRecord. uid);// .toJSON());
+      console.log("Successfully fetched user data:", userRecord.uid);// .toJSON());
     })
     .catch(function(error) {
       console.log("Error fetching user data:", error);
@@ -123,32 +90,10 @@ app.post('/login', function(req, res) {
 });
 
 app.get('/test', (request, response) => {
-  const firma = firebaseApp.database().ref('firma').once('value');
-  const kullanici = firebaseApp.database().ref('kullanici').once('value');
-  var yaz = "?";
-
-  Promise.all([firma,kullanici]).then(res=>{
-    var e1 = "?"
-    for(var i=0;i<res[0].val().length;i++) {
-      if (res[0].val()[i].ad === "arnege") e1 = res[0].val()[i].id.toString();
-    }
-
-    var e2 = "?"
-    for(var i=0;i<res[1].val().length;i++) {
-      if (
-        res[1].val()[i].firma.toString() === "1" &&
-        res[1].val()[i].kullanici === "fatih@arnege.com" &&
-        res[1].val()[i].sifre.toString() === "1122"
-      )
-      {
-        e2 = "ok";
-      }
-    }
-
-    yaz = e1 + " -- " + e2;
-  }).then(x=>{
-    response.send(yaz);
-  });
+  const db = firebaseApp.database();
+  dt.ilkKayitOlustur(db);
+  response.send('ok');
+  //dt.getFirmaKontrol(response, db, "arnege","fatih@arnege.com","1122");
 });
 
 app.get('/firma', (request, response) => {
