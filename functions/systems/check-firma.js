@@ -1,25 +1,16 @@
-var myDateTime = function () {
-    return Date();
+var myDateTime = function() {
+  return Date();
 };
 
-
-var getFirmaKontrol  = function(ref, firma) {
-  var don = "-1";
-  var obj = ref.once('value').then(snap => snap.val());
-
-  obj.then(facts => {
-
-    facts.forEach(function (fact) {
-      console.log(fact.ad + " <---> " + firma);
-      if (fact.ad === firma) {
-        don = fact.id.toString();
-        console.log("buldu!... " + don);
-      }
-    });
-  });
-
-  return don;
+function getFirmaKontrol(facts, firma) {
+  var sonuc = "-1"
+  for(i=0;i<facts.length;i++) {
+    ///console.log("----> " + facts[i]);
+    if (facts[i].ad === firma) sonuc = facts[i].id.toString();
+  }
+  return sonuc;
 }
+
 
 exports.myDateTime = myDateTime;
 exports.getFirmaKontrol = getFirmaKontrol;

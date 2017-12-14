@@ -123,30 +123,32 @@ app.post('/login', function(req, res) {
 });
 
 app.get('/test', (request, response) => {
-  /*
-  const ref = firebaseApp.database().ref('firma');
-  var obj = ref.once('value').then(snap => snap.val());
+  const firma = firebaseApp.database().ref('firma').once('value');
+  const kullanici = firebaseApp.database().ref('kullanici').once('value');
+  var yaz = "?";
 
-  obj.then(facts => {
-    return response.json(facts);
+  Promise.all([firma,kullanici]).then(res=>{
+    var e1 = "?"
+    for(var i=0;i<res[0].val().length;i++) {
+      if (res[0].val()[i].ad === "arnege") e1 = res[0].val()[i].id.toString();
+    }
+
+    var e2 = "?"
+    for(var i=0;i<res[1].val().length;i++) {
+      if (
+        res[1].val()[i].firma.toString() === "1" &&
+        res[1].val()[i].kullanici === "fatih@arnege.com" &&
+        res[1].val()[i].sifre.toString() === "1122"
+      )
+      {
+        e2 = "ok";
+      }
+    }
+
+    yaz = e1 + " -- " + e2;
+  }).then(x=>{
+    response.send(yaz);
   });
-  */
-  const ref = firebaseApp.database().ref('firma');
-  console.log("Gelen deger -> " + dt.myDateTime());
-  return response.send(dt.getFirmaKontrol(ref,"test"));
-  /*
-  const ref = firebaseApp.database().ref('firma');
-  var obj = ref.once('value').then(snap => snap.val());
-  obj.then(facts => {
-    //return response.json(facts);
-    var myArray = new Array();
-    facts.forEach(function (fact) {
-      console.log(fact);
-      myArray.push(fact);
-    });
-    return response.send(JSON.stringify(myArray));
-  });
-  */
 });
 
 app.get('/firma', (request, response) => {
