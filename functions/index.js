@@ -4,7 +4,7 @@ const functions = require('firebase-functions');
 const firebase = require('firebase-admin');
 const express = require('express');
 const engines = require('consolidate');
-//
+
 const dt = require('./systems/check-firma');
 
 const firebaseConfig = {
@@ -91,9 +91,7 @@ app.post('/login', function(req, res) {
 
 app.get('/test', (request, response) => {
   const db = firebaseApp.database();
-  dt.ilkKayitOlustur(db);
-  response.send('ok');
-  //dt.getFirmaKontrol(response, db, "arnege","fatih@arnege.com","1122");
+  dt.getFirmaKontrol(response, db, "arnege","user@arnege.com","1122");
 });
 
 app.get('/firma', (request, response) => {

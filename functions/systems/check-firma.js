@@ -33,17 +33,49 @@ function getFirmaKontrol(response, db, fname, uname, upass) {
   var yaz = "?";
 
   return Promise.all([firma, kullanici]).then(res => {
-    console.log("firma : " + JSON.stringify(res[0].val()));
-    console.log("kullanici : " + JSON.stringify(res[1].val()));
-
-
     var e1 = "?"
-    for (var i = 0; i < res[0].val().length; i++) {
-      if (res[0].val()[i].ad === fname) {
-        e1 = res[0].val()[i].id.toString();
-      }
-    }
+    var e2 = "?"
 
+    res[0].forEach(function(data) {
+      if (data.val().ad === fname) {
+        e1 = data.key;
+        console.log("buldu!.. " + e1);
+      }
+    });
+
+    res[1].forEach(function(data) {
+      if (
+        data.val().firma.toString() === e1 &&
+        data.val().kullanici === uname &&
+        data.val().sifre.toString() === upass) {
+        e2 = data.key;
+      }
+    });
+
+    /*
+    //const firma = db.ref('firma').once('value');
+    res[0].then(snap => {
+      snap.forEach(function(data) {
+        console.log(data.val().ad + " -- " + fname);
+        if (data.val().ad === fname) {
+          e1 = data.key;
+          console.log("buldu!.. " + e1);
+        }
+      });
+    });
+
+    //const firma = db.ref('kullanici').once('value');
+    res[1].then(snap => {
+      snap.forEach(function(data) {
+        console.log(data.val().ad + " -- " + fname);
+        if (data.val().ad === fname) {
+          e2 = data.key;
+          console.log("buldu!.. " + e1);
+        }
+      });
+    });
+    */
+    /*
     var e2 = "?"
     for (var i = 0; i < res[1].val().length; i++) {
       console.log("donen : " + res[1].val()[i].firma.toString() + " -- " + e1);
@@ -54,6 +86,7 @@ function getFirmaKontrol(response, db, fname, uname, upass) {
         e2 = "ok";
       }
     }
+    */
 
     yaz = e1 + " -- " + e2 + " -- " + uuid.v1();
   }).then(x => {
