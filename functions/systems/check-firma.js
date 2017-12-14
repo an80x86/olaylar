@@ -35,11 +35,12 @@ function getFirmaKontrol(response, db, fname, uname, upass) {
   return Promise.all([firma, kullanici]).then(res => {
     var e1 = "?"
     var e2 = "?"
+    var e3 = "?";
 
     res[0].forEach(function(data) {
       if (data.val().ad === fname) {
         e1 = data.key;
-        console.log("buldu!.. " + e1);
+        console.log("buldu(1)!.. " + e1);
       }
     });
 
@@ -49,48 +50,22 @@ function getFirmaKontrol(response, db, fname, uname, upass) {
         data.val().kullanici === uname &&
         data.val().sifre.toString() === upass) {
         e2 = data.key;
+        console.log("buldu(2)!.. " + e2);
       }
     });
 
-    /*
-    //const firma = db.ref('firma').once('value');
-    res[0].then(snap => {
-      snap.forEach(function(data) {
-        console.log(data.val().ad + " -- " + fname);
-        if (data.val().ad === fname) {
-          e1 = data.key;
-          console.log("buldu!.. " + e1);
-        }
+    if (e1 !== '?' && e2 !== '?') {
+      e3 = uuid.v1();
+      var hopperRef = db.ref('kullanici/'+e2);
+      hopperRef.update({
+        "token": e3
       });
-    });
-
-    //const firma = db.ref('kullanici').once('value');
-    res[1].then(snap => {
-      snap.forEach(function(data) {
-        console.log(data.val().ad + " -- " + fname);
-        if (data.val().ad === fname) {
-          e2 = data.key;
-          console.log("buldu!.. " + e1);
-        }
-      });
-    });
-    */
-    /*
-    var e2 = "?"
-    for (var i = 0; i < res[1].val().length; i++) {
-      console.log("donen : " + res[1].val()[i].firma.toString() + " -- " + e1);
-      if (
-        res[1].val()[i].firma.toString() === e1 &&
-        res[1].val()[i].kullanici === uname &&
-        res[1].val()[i].sifre.toString() === upass) {
-        e2 = "ok";
-      }
     }
-    */
 
-    yaz = e1 + " -- " + e2 + " -- " + uuid.v1();
+    yaz = e3;//e1 + " -- " + e2 + " -- " + e3;
   }).then(x => {
-    response.send(yaz);
+    response.redirect('/?token=' + yaz);
+    //response.send(yaz);
   });
 }
 
