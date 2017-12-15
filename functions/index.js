@@ -62,7 +62,7 @@ app.get('/inst', (request, response) => {
 
 app.get('/', (request, response) => {
   const db = firebaseApp.database();
-  var token = request.param('token');
+  var token = request.query.token;
   if (!token) {
     response.redirect('/login')
     return;
