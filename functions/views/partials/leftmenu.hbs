@@ -1,0 +1,105 @@
+<div class="left side-menu">
+  <div class="sidebar-inner slimscrollleft">
+
+    <!--- Sidemenu -->
+    <div id="sidebar-menu">
+      <ul>
+        <li class="text-muted menu-title">Navigasyon</li>
+
+        <li class="has_sub">
+          <a href="/?token={{gelen.token}}" class="waves-effect">
+            <i class="zmdi zmdi-view-dashboard"></i>
+            <span>
+              Gösterge Paneli
+            </span>
+          </a>
+        </li>
+
+        <li class="has_sub">
+          <a href="javascript:void(0);" class="waves-effect">
+            <i class="zmdi zmdi-collection-text"></i>
+            <span>
+              Sipariş
+            </span>
+            <span class="menu-arrow"></span>
+          </a>
+          <ul class="list-unstyled">
+
+            <li>
+              <a href="/siparis?token={{gelen.token}}">Sipariş Girme</a>
+            </li>
+            <li>
+              <a href="/siparis-durum?token={{gelen.token}}">Sipariş Durum</a>
+            </li>
+            <li>
+              <a href="/gider?token={{gelen.token}}">Gider Girme</a>
+            </li>
+
+          </ul>
+        </li>
+
+        {{#if gelen.admin }}
+        <li class="has_sub">
+          <a href="javascript:void(0);" class="waves-effect">
+            <i class="zmdi zmdi-album"></i>
+            <span>
+              Opencart
+            </span>
+            <span class="menu-arrow"></span>
+          </a>
+          <ul class="list-unstyled">
+            <li>
+              <a href="components-grid.html">Sipariş Çekme</a>
+            </li>
+            <li>
+              <a href="components-range-sliders.html">Revize Etme</a>
+            </li>
+          </ul>
+        </li>
+        {{/if}}
+
+        <li class="has_sub">
+          <a href="javascript:void(0);" class="waves-effect">
+            <i class="zmdi zmdi-settings"></i>
+            <span>
+              Yönetim
+            </span>
+            <span class="menu-arrow"></span>
+          </a>
+          <ul class="list-unstyled">
+            {{#if gelen.admin }}
+            <li>
+              <a href="widgets-tiles.html">Müşteri Bilgi Sms'i</a>
+            </li>
+            <li>
+              <a href="widgets-tiles.html">Kargo İşlemleri</a>
+            </li>
+            <li>
+              <a href="widgets-tiles.html">Tedarikçi Listesi</a>
+            </li>
+            <li>
+              <a href="widgets-tiles.html">Borç/Alacak</a>
+            </li>
+            <li>
+              <a href="widgets-charts.html">Yetkilendirme</a>
+            </li>
+            {{/if}}
+            <li>
+              <a href="widgets-tiles.html">Bilgi Güncelleme</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="has_sub">
+          <a href="/login" class="waves-effect"><i class="zmdi zmdi-power"></i><span> Çıkış </span> </a>
+        </li>
+
+      </ul>
+      <div class="clearfix"></div>
+    </div>
+    <!-- Sidebar -->
+    <div class="clearfix"></div>
+
+  </div>
+
+</div>

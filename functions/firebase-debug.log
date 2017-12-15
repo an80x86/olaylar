@@ -1,155 +1,40 @@
-[debug] [2017-12-14T13:31:06.703Z] ----------------------------------------------------------------------
-[debug] [2017-12-14T13:31:06.707Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only functions,hosting
-[debug] [2017-12-14T13:31:06.707Z] CLI Version:   3.15.4
-[debug] [2017-12-14T13:31:06.707Z] Platform:      darwin
-[debug] [2017-12-14T13:31:06.707Z] Node Version:  v6.11.4
-[debug] [2017-12-14T13:31:06.708Z] Time:          Thu Dec 14 2017 16:31:06 GMT+0300 (+03)
-[debug] [2017-12-14T13:31:06.708Z] ----------------------------------------------------------------------
+[debug] [2017-12-15T13:13:54.830Z] ----------------------------------------------------------------------
+[debug] [2017-12-15T13:13:54.833Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only functions,hosting
+[debug] [2017-12-15T13:13:54.834Z] CLI Version:   3.15.4
+[debug] [2017-12-15T13:13:54.834Z] Platform:      darwin
+[debug] [2017-12-15T13:13:54.834Z] Node Version:  v6.11.4
+[debug] [2017-12-15T13:13:54.835Z] Time:          Fri Dec 15 2017 16:13:54 GMT+0300 (+03)
+[debug] [2017-12-15T13:13:54.835Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2017-12-14T13:31:06.725Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2017-12-14T13:31:06.725Z] > authorizing via signed-in user
-[debug] [2017-12-14T13:31:06.728Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/hesapci-6e9c0  
- Thu Dec 14 2017 16:31:06 GMT+0300 (+03)
-[debug] [2017-12-14T13:31:08.773Z] <<< HTTP RESPONSE 200
-[debug] [2017-12-14T13:31:08.774Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/hesapci-6e9c0/tokens  
- Thu Dec 14 2017 16:31:08 GMT+0300 (+03)
-[debug] [2017-12-14T13:31:09.701Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-15T13:13:54.858Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-12-15T13:13:54.858Z] > authorizing via signed-in user
+[debug] [2017-12-15T13:13:54.861Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/hesapci-6e9c0  
+ Fri Dec 15 2017 16:13:54 GMT+0300 (+03)
+[debug] [2017-12-15T13:13:56.426Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-15T13:13:56.428Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/hesapci-6e9c0/tokens  
+ Fri Dec 15 2017 16:13:56 GMT+0300 (+03)
+[debug] [2017-12-15T13:13:57.498Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from '/Users/user/Desktop/olaylar'...
 [info] 
 [info] i  functions: Preparing to emulate functions.
-[debug] [2017-12-14T13:31:10.168Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/hesapci-6e9c0  
- Thu Dec 14 2017 16:31:10 GMT+0300 (+03)
-[debug] [2017-12-14T13:31:10.169Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/hesapci-6e9c0/apiKeys  
- Thu Dec 14 2017 16:31:10 GMT+0300 (+03)
-[debug] [2017-12-14T13:31:10.169Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/hesapci-6e9c0  
- Thu Dec 14 2017 16:31:10 GMT+0300 (+03)
-[debug] [2017-12-14T13:31:11.487Z] <<< HTTP RESPONSE 200
-[debug] [2017-12-14T13:31:11.488Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/353952758700/clients/_:getWebAppConfig  
- Thu Dec 14 2017 16:31:11 GMT+0300 (+03)
-[debug] [2017-12-14T13:31:11.663Z] <<< HTTP RESPONSE 200
-[debug] [2017-12-14T13:31:12.001Z] <<< HTTP RESPONSE 200
-[debug] [2017-12-14T13:31:12.268Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-15T13:13:57.964Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/hesapci-6e9c0  
+ Fri Dec 15 2017 16:13:57 GMT+0300 (+03)
+[debug] [2017-12-15T13:13:57.965Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/hesapci-6e9c0/apiKeys  
+ Fri Dec 15 2017 16:13:57 GMT+0300 (+03)
+[debug] [2017-12-15T13:13:57.965Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/hesapci-6e9c0  
+ Fri Dec 15 2017 16:13:57 GMT+0300 (+03)
+[debug] [2017-12-15T13:13:59.175Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-15T13:13:59.177Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-15T13:13:59.178Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/353952758700/clients/_:getWebAppConfig  
+ Fri Dec 15 2017 16:13:59 GMT+0300 (+03)
+[debug] [2017-12-15T13:13:59.356Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-15T13:14:00.114Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: public
 [info] ✔  hosting: Local server: http://localhost:5000
 
 [info] ✔  functions: app: http://localhost:5001/hesapci-6e9c0/us-central1/app
-[info] [hosting] Rewriting /?token=-L0JPKWbiVPxPijCAM5h to local function app
-[debug] [2017-12-15T07:21:12.922Z] ----------------------------------------------------------------------
-[debug] [2017-12-15T07:21:12.926Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only functions,hosting
-[debug] [2017-12-15T07:21:12.926Z] CLI Version:   3.15.4
-[debug] [2017-12-15T07:21:12.926Z] Platform:      darwin
-[debug] [2017-12-15T07:21:12.926Z] Node Version:  v6.11.4
-[debug] [2017-12-15T07:21:12.927Z] Time:          Fri Dec 15 2017 10:21:12 GMT+0300 (+03)
-[debug] [2017-12-15T07:21:12.927Z] ----------------------------------------------------------------------
-[debug] 
-[debug] [2017-12-15T07:21:12.945Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2017-12-15T07:21:12.946Z] > authorizing via signed-in user
-[debug] [2017-12-15T07:21:12.948Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2017-12-15T07:21:12.948Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/2YXJ3p6hIa9eZ4d2i8FWxqQgwpX0kNg78TaViDC-m6w',
-  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
-  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
-  grant_type: 'refresh_token',
-  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
- Fri Dec 15 2017 10:21:12 GMT+0300 (+03)
-[debug] [2017-12-15T07:21:14.138Z] <<< HTTP RESPONSE 200
-[debug] [2017-12-15T07:21:14.157Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/hesapci-6e9c0  
- Fri Dec 15 2017 10:21:14 GMT+0300 (+03)
-[debug] [2017-12-15T07:21:16.091Z] <<< HTTP RESPONSE 200
-[debug] [2017-12-15T07:21:16.092Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/hesapci-6e9c0/tokens  
- Fri Dec 15 2017 10:21:16 GMT+0300 (+03)
-[debug] [2017-12-15T07:21:17.547Z] <<< HTTP RESPONSE 200
-[info] 
-[info] === Serving from '/Users/user/Desktop/olaylar'...
-[info] 
-[info] i  functions: Preparing to emulate functions.
-[debug] [2017-12-15T07:21:18.114Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/hesapci-6e9c0  
- Fri Dec 15 2017 10:21:18 GMT+0300 (+03)
-[debug] [2017-12-15T07:21:18.115Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/hesapci-6e9c0/apiKeys  
- Fri Dec 15 2017 10:21:18 GMT+0300 (+03)
-[debug] [2017-12-15T07:21:18.115Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/hesapci-6e9c0  
- Fri Dec 15 2017 10:21:18 GMT+0300 (+03)
-[debug] [2017-12-15T07:21:20.532Z] <<< HTTP RESPONSE 200
-[debug] [2017-12-15T07:21:20.533Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/353952758700/clients/_:getWebAppConfig  
- Fri Dec 15 2017 10:21:20 GMT+0300 (+03)
-[debug] [2017-12-15T07:21:20.553Z] <<< HTTP RESPONSE 200
-[debug] [2017-12-15T07:21:20.853Z] <<< HTTP RESPONSE 200
-[debug] [2017-12-15T07:21:22.297Z] <<< HTTP RESPONSE 200
-[info] i  hosting: Serving hosting files from: public
-[info] ✔  hosting: Local server: http://localhost:5000
-
-[info] ✔  functions: app: http://localhost:5001/hesapci-6e9c0/us-central1/app
-[info] [hosting] Rewriting / to local function app
-[info] [hosting] Rewriting /login to local function app
-[info] [hosting] Rewriting /robots.txt to local function app
-[info] [hosting] Rewriting / to local function app
-[info] [hosting] Rewriting /login to local function app
-[info] [hosting] Rewriting /login to local function app
-[info] [hosting] Rewriting /?token=-L0JPKWbiVPxPijCAM5h to local function app
-[info] [hosting] Rewriting /?token=-L0JPKWbiVPxPijCAM5h to local function app
-[info] [hosting] Rewriting /inst to local function app
-[info] [hosting] Rewriting /favicon.ico to local function app
-[info] [hosting] Rewriting /ins to local function app
-[info] [hosting] Rewriting / to local function app
-[info] [hosting] Rewriting /login to local function app
-[info] [hosting] Rewriting /login to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /login to local function app
-[info] [hosting] Rewriting /login to local function app
-[info] [hosting] Rewriting /?token=hdhdhdh to local function app
-[info] [hosting] Rewriting /?token=hdhdhdh to local function app
-[info] [hosting] Rewriting /?token=hdhdhdh to local function app
-[info] [hosting] Rewriting /?token=hdhdhdh to local function app
-[info] [hosting] Rewriting /?token=hdhdhdh to local function app
-[info] [hosting] Rewriting /?token=hdhdhdh to local function app
-[info] [hosting] Rewriting /login to local function app
-[info] [hosting] Rewriting /login to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
 [info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
 [info] [hosting] Rewriting /assets/js/jquery.min.map to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /assets/js/jquery.min.map to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /assets/js/jquery.min.map to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /assets/js/jquery.min.map to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /assets/js/jquery.min.map to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /assets/js/jquery.min.map to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /robots.txt to local function app
-[info] [hosting] Rewriting /assets/js/jquery.min.map to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /assets/js/jquery.min.map to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /login to local function app
-[info] [hosting] Rewriting /assets/js/jquery.min.map to local function app
-[info] [hosting] Rewriting /login to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /login to local function app
-[info] [hosting] Rewriting /assets/js/jquery.min.map to local function app
-[info] [hosting] Rewriting /login to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /assets/js/jquery.min.map to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /assets/js/jquery.min.map to local function app
-[info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
-[info] [hosting] Rewriting /assets/js/jquery.min.map to local function app
-[info] [hosting] Rewriting /ui-buttons.html to local function app
 [info] [hosting] Rewriting /?token=-L0O46OJaEemwipUIM9O to local function app
 [info] [hosting] Rewriting /assets/js/jquery.min.map to local function app

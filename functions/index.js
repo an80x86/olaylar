@@ -1,3 +1,5 @@
+const fs = require('fs');
+const hbs = require('hbs');
 const bodyParser = require('body-parser');
 const uuid = require('uuid');
 const functions = require('firebase-functions');
@@ -50,9 +52,12 @@ function getLogin() {
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.engine('hbs', engines.handlebars);
-app.set('views', './views');
+//app.engine('hbs', engines.handlebars);
+//app.set('views', './views');
+//app.set('view engine', 'hbs');
+hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
+app.set('views', __dirname + '/views');
 
 app.get('/inst', (request, response) => {
   const db = firebaseApp.database();
@@ -94,6 +99,8 @@ app.post('/login', function(req, res) {
   var password = req.body.password;
   dt.getFirmaKontrol(res, db, firma, name, password);
 });
+
+///////////////////////////////////////////////////////////////////////////
 
 app.get('/test', (request, response) => {
   const db = firebaseApp.database();

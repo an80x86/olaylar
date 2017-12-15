@@ -1,0 +1,92 @@
+<nav class="navbar navbar-custom">
+  <ul class="nav navbar-nav">
+    <li class="nav-item">
+      <button class="button-menu-mobile open-left waves-light waves-effect">
+        <i class="zmdi zmdi-menu"></i>
+      </button>
+    </li>
+  </ul>
+
+  <ul class="nav navbar-nav pull-right">
+    <li class="nav-item dropdown notification-list">
+      <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+        <i class="zmdi zmdi-notifications-none noti-icon"></i>
+        <span class="noti-icon-badge"></span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-lg" aria-labelledby="Preview">
+        <!-- item-->
+        <div class="dropdown-item noti-title">
+          <h5>
+            <small>
+              <span class="label label-danger pull-xs-right">0</span>Uyarılar</small>
+          </h5>
+        </div>
+
+        <!-- item-->
+        <a href="javascript:void(0);" class="dropdown-item notify-item">
+          <p class="notify-details">Henüz uyarı yok!
+          </p>
+        </a>
+
+        <!-- All-->
+        <a href="javascript:void(0);" class="dropdown-item notify-item notify-all">
+          Tüm Uyarılar
+        </a>
+
+      </div>
+    </li>
+
+    <li class="nav-item dropdown notification-list">
+      <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+        <i class="zmdi zmdi-email noti-icon"></i>
+        <span class="noti-icon-badge"></span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-arrow-success dropdown-lg" aria-labelledby="Preview">
+        <!-- item-->
+        <div class="dropdown-item noti-title bg-success">
+          <h5>
+            <small>
+              <span class="label label-danger pull-xs-right">0</span>Mesajlar</small>
+          </h5>
+        </div>
+
+        <!-- item-->
+        <a href="javascript:void(0);" class="dropdown-item notify-item">
+          <p class="notify-details">
+            <b>Henüz mesaj yok!</b>
+          </p>
+        </a>
+
+        <!-- All-->
+        <a href="javascript:void(0);" class="dropdown-item notify-item notify-all">
+          Tüm Mesajlar
+        </a>
+
+      </div>
+    </li>
+
+    <li class="nav-item dropdown notification-list">
+      <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+        <img src="assets/images/users/user.png" alt="user" class="img-circle">
+      </a>
+      <div class="dropdown-menu dropdown-menu-right dropdown-arrow profile-dropdown " aria-labelledby="Preview">
+
+        <!-- item-->
+        <div class="dropdown-item noti-title">
+          <h5 class="text-overflow">
+            <small>{{ gelen.kullanici }}</small>
+          </h5>
+        </div>
+
+        <!-- item-->
+        <a href="/login" class="dropdown-item notify-item">
+          <i class="zmdi zmdi-power"></i>
+          <span>Çıkış</span>
+        </a>
+
+      </div>
+    </li>
+
+  </ul>
+
+</nav>
