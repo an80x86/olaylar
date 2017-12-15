@@ -1,13 +1,15 @@
 function checkToken(db, token) {
   const kullanici = db.ref('kullanici').child(token).once('value');
-  var yaz = "?";
+  var yaz = {token:'?', admin:false, kullanici:''};
 
   return Promise.all([kullanici]).then(res => {
     if (res[0].val()) { // null degil ise oku!.
-      yaz = res[0].val().token;
+      yaz.token = res[0].val().token;
+      yaz.admin = res[0].val().admin;
+      yaz.kullanici = res[0].val().kullanici;
     }
   }).then(x => {
-    return yaz === token && yaz !== "?";
+    return yaz;
   });
 }
 
@@ -30,8 +32,9 @@ function ilkKayitOlustur(db) {
       var newPostRef = db.ref('kullanici').push();
       newPostRef.set({
         firma: data.key,
-        kullanici: "user@" + data.val().ad + ".com",
+        kullanici: "admin@" + data.val().ad + ".com",
         sifre: "1122",
+        admin: true,
         token: ""
       });
     });

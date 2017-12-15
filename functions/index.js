@@ -18,10 +18,7 @@ const firebaseConfig = {
 
 var serviceAccount = require("./hesapci-6e9c0-firebase-adminsdk-nkn7c-a16b2e3215.json");
 
-const firebaseApp = firebase.initializeApp({
-    credential: firebase.credential.cert(serviceAccount),
-    databaseURL: "https://hesapci-6e9c0.firebaseio.com"
-});
+const firebaseApp = firebase.initializeApp({credential: firebase.credential.cert(serviceAccount), databaseURL: "https://hesapci-6e9c0.firebaseio.com"});
 
 function getFacts() {
   const ref = firebaseApp.database().ref('facts');
@@ -41,23 +38,27 @@ function getKullanicis() {
 function getLogin() {
   var defaultAuth = firebaseApp.auth();
   var defaultDatabase = firebaseApp.database();
-  console.log("--------------> "+firebase.app().name);// "default"
+  console.log("--------------> " + firebase.app().name); // "default"
 
-  defaultAuth.getUserByEmail("an80x86@gmail.com")
-    .then(function(userRecord) {
-      console.log("Successfully fetched user data:", userRecord.uid);// .toJSON());
-    })
-    .catch(function(error) {
-      console.log("Error fetching user data:", error);
-    });
+  defaultAuth.getUserByEmail("an80x86@gmail.com").then(function(userRecord) {
+    console.log("Successfully fetched user data:", userRecord.uid); // .toJSON());
+  }).catch(function(error) {
+    console.log("Error fetching user data:", error);
+  });
 }
 
 const app = express();
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.engine('hbs', engines.handlebars);
-app.set('views','./views');
-app.set('view engine','hbs');
+app.set('views', './views');
+app.set('view engine', 'hbs');
+
+app.get('/inst', (request, response) => {
+  const db = firebaseApp.database();
+  dt.ilkKayitOlustur(db);
+  response.redirect('/login');
+});
 
 app.get('/', (request, response) => {
   const db = firebaseApp.database();
@@ -66,14 +67,18 @@ app.get('/', (request, response) => {
     response.redirect('/login')
     return;
   }
-  const sonuc = dt.checkToken(db,token).then(gelen=> {
+  const sonuc = dt.checkToken(db, token).then(gelen => {
+    //console.log("gelen data:" + JSON.stringify(gelen));
     if (!gelen) {
       response.redirect('/login');
-    }
-    else {
-      getFacts().then(facts => {
-        response.render('index', { facts });
-      });
+    } else {
+      if (token != gelen.token) {
+        response.redirect('/login');
+      } else {
+        getFacts().then(facts => {
+          response.render('index', {facts, gelen});
+        });
+      }
     }
   });
 });
@@ -87,25 +92,25 @@ app.post('/login', function(req, res) {
   var firma = req.body.firma;
   var name = req.body.name;
   var password = req.body.password;
-  dt.getFirmaKontrol(res, db, firma,name,password);
+  dt.getFirmaKontrol(res, db, firma, name, password);
 });
 
 app.get('/test', (request, response) => {
   const db = firebaseApp.database();
-  dt.getFirmaKontrol(response, db, "arnege","user@arnege.com","1122");
+  dt.getFirmaKontrol(response, db, "arnege", "user@arnege.com", "1122");
 });
 
 app.get('/firma', (request, response) => {
   response.set('Cache-Control', 'public, max-age=300, s-maxage=600');
   getFirmas().then(facts => {
-    response.render('firma', { facts });
+    response.render('firma', {facts});
   });
 });
 
 app.get('/kullanici', (request, response) => {
   response.set('Cache-Control', 'public, max-age=300, s-maxage=600');
   getKullanicis().then(facts => {
-    response.render('kullanici', { facts });
+    response.render('kullanici', {facts});
   });
 });
 
