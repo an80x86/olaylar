@@ -88,6 +88,29 @@ app.get('/', (request, response) => {
   });
 });
 
+app.get('/siparis', (request, response) => {
+  const db = firebaseApp.database();
+  var token = request.query.token;
+  if (!token) {
+    response.redirect('/login')
+    return;
+  }
+  const sonuc = dt.checkToken(db, token).then(gelen => {
+    //console.log("gelen data:" + JSON.stringify(gelen));
+    if (!gelen) {
+      response.redirect('/login');
+    } else {
+      if (token != gelen.token) {
+        response.redirect('/login');
+      } else {
+        getFacts().then(facts => {
+          response.render('siparis', {facts, gelen});
+        });
+      }
+    }
+  });
+});
+
 app.get('/login', (request, response) => {
   response.render('login');
 });
