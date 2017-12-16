@@ -1,3 +1,6 @@
 # olaylar
 
-sample of : https://www.youtube.com/watch?v=LOeioOKUKI8
+Tek başına çalışan sipariş/tahsilat takip yazılımı.
+Opencart destekli olacak.
+
+Özenle devam ediyoruz.
