@@ -8,6 +8,7 @@ const express = require('express');
 const engines = require('consolidate');
 
 const dt = require('./systems/check-firma');
+const td = require('./systems/tedarikci');
 
 const firebaseConfig = {
   apiKey: "AIzaSyCMIMeI5KzNVLr7zQYlaIZYudhChiW4uU0",
@@ -64,6 +65,32 @@ app.get('/inst', (request, response) => {
   dt.ilkKayitOlustur(db);
   response.redirect('/login');
 });
+
+// tedarikci //////////////////////////////////
+app.get('/tedarikci', (request, response) => {
+  const db = firebaseApp.database();
+  var token = request.query.token;
+  if (!token) {
+    response.redirect('/login')
+    return;
+  }
+  const sonuc = dt.checkToken(db, token).then(gelen => {
+    if (!gelen) {
+      response.redirect('/login');
+    } else {
+      if (token != gelen.token) {
+        response.redirect('/login');
+      } else {
+        td.getTedariks(db,token).then(facts => {
+          console.log("Ayse : " + facts);
+          response.render('tedarikci', {facts});
+        });
+      }
+    }
+  });
+});
+
+///////////////////////////////////////////////
 
 app.get('/', (request, response) => {
   const db = firebaseApp.database();
